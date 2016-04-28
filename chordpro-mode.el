@@ -73,6 +73,7 @@
      ("^\\(#.*\\)" . font-lock-comment-face)
      ("\\({subtitle[^}]*}\\)" . font-lock-type-face)
      ("\\({title[^}]*}\\)" . font-lock-keyword-face)
+     ("\\({\\(composer\\|artist\\|album\\|capo\\|key\\|time\\|tempo\\)[^}]*}\\)" . font-lock-keyword-face)
      ("\\({[^}]*}\\)" . font-lock-variable-name-face))))
 
 ;;;; Functions
@@ -203,7 +204,7 @@ Uses `completing-read' to select among chords in current buffer."
 (defun chordpro-insert-chorus ()
   "Insert a chordpro chorus."
   (interactive)
-  (insert "{start-of-chorus}\n\n{end-of-chorus}\n")
+  (insert "{start_of_chorus}\n\n{end_of_chorus}\n")
   (search-backward "\n" nil nil 2))
 
 ;;;; ChordPro integration
