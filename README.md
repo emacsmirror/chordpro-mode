@@ -26,7 +26,7 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 * `C-c x` : Copy the next chord
 * `C-M-n` : Move chord at point forward PREFIX chars.
 * `C-M-p` : Move chord at point backward PREFIX chars
-* `C-c h` : Insert a comment directive
+* `C-c m` : Insert a comment directive
 * `C-c h` : Insert a chorus directive
 * `C-c t` : Insert a title directive
 * `C-c s` : Insert a subtitle directive
