@@ -103,7 +103,7 @@ Uses `completing-read'."
       (save-match-data
         (goto-char (point-min))
         (while (re-search-forward chordpro-chord-regexp nil t)
-          (add-to-list 'chords (match-string 1)))))
+          (cl-pushnew (match-string 1) chords))))
     (sort chords #'string<)))
 
 (defun chordpro-choose-replace-current-chord ()
