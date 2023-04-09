@@ -96,18 +96,18 @@ Uses `completing-read'."
     (unless (string-blank-p selection)
       (chordpro-insert-chord selection))))
 
-;;;This could be done more efficiently, but for most usages
-;;;it shouldn't be a problem to just scan the whole document each time
 (defun chordpro-buffer-chord-list ()
   "Return a list of the chords currently used in the document."
+  ;;This could be done more efficiently, but for most usages
+  ;;it shouldn't be a problem to just scan the whole document each time
   (interactive)
-  (let ((chords nil))
+  (let (chords)
     (save-excursion
       (save-match-data
         (goto-char (point-min))
         (while (re-search-forward chordpro-chord-regexp nil t)
           (add-to-list 'chords (match-string 1)))))
-    (sort chords 'string<)))
+    (sort chords #'string<)))
 
 (defun chordpro-choose-replace-current-chord ()
   "Replace the current chord.
