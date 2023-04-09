@@ -110,14 +110,13 @@ Uses `completing-read'."
     (sort chords 'string<)))
 
 (defun chordpro-choose-replace-current-chord ()
-  "Replace the current chord with one chosen from a dropdown list"
+  "Replace the current chord.
+Uses `completing-read' to select among chords in current buffer."
   (interactive)
-  (when (featurep 'dropdown-list)
-    (let* ((choices (chordpro-buffer-chord-list))
-           (selection (dropdown-list choices)))
-      (when selection
-        (chordpro-delete-current-chord)
-        (chordpro-insert-chord (nth selection choices))))))
+  (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
+    (unless (string-blank-p selection)
+      (chordpro-delete-current-chord)
+      (chordpro-insert-chord selection))))
 
 (defun chordpro-normalize-chord (chord)
   "Trim whitespace, capitalize first letter of chord."
