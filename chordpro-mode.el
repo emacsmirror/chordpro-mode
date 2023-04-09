@@ -215,6 +215,25 @@ the start and end of the chord."
   (insert "{start-of-chorus}\n\n{end-of-chorus}\n")
   (search-backward "\n" nil nil 2))
 
+;;;; ChordPro integration
+
+(defun chordpro-export (&optional arg)
+  "Export current buffer as PDF with ChordPro.
+With a prefix argument, prompt for chordpro switches before running
+external command."
+  (interactive "P")
+  (let* ((default-switches (concat "--output=" (file-name-with-extension (buffer-file-name) "pdf") " " (buffer-file-name)))
+         (switches (split-string (if arg
+                                     (read-string "ChordPro switches: " default-switches nil)
+                                   default-switches)))
+         (buffer (get-buffer-create " *ChordPro*")))
+    (unwind-protect
+        (unless (zerop (apply #'call-process "chordpro" nil (list buffer t) nil switches))
+          (error "Unable to export ChordPro document: %S"
+                 (with-current-buffer buffer
+                   (string-trim-right (buffer-string)))))
+      (kill-buffer buffer))))
+
 ;;;; Major mode
 
 (defvar-keymap chordpro-mode-map
