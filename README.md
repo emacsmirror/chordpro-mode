@@ -2,9 +2,9 @@
 
 ## Introduction ##
 
-This is an emacs major mode, derived from text-mode, for editing files
-in the Chordpro format (see, for example,
-<http://www.vromans.org/johan/projects/Chordii/>).
+This is an Emacs major mode, derived from text-mode, for editing files
+in the [ChordPro
+format](https://www.chordpro.org/chordpro/ChordPro-File-Format-Specification.html).
 
 It is currently somewhat crude, but it does simplify a few things and
 I do intend to keep adding any refinements that I find useful in my
