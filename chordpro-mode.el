@@ -74,14 +74,11 @@
      ("\\({title[^}]*}\\)" . font-lock-keyword-face)
      ("\\({[^}]*}\\)" . font-lock-variable-name-face))))
 
-(defvar chordpro-file-encoding 'latin-1)
-       
 (define-derived-mode chordpro-mode text-mode "Chordpro"
   "Major mode for editing Chordpro files.
 Special commands:
 \\{chordpro-mode-map}"
   (setq font-lock-defaults chordpro-font-lock-defaults)
-  (setq buffer-file-coding-system chordpro-file-encoding)
   (auto-fill-mode -1))
 
 (defun chordpro--insert-chord (chord)
