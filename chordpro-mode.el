@@ -106,14 +106,12 @@ Special commands:
   (insert "[" (chordpro-normalize-chord chord) "]"))
 
 (defun chordpro-choose-insert-chord ()
-  "Insert a chord chosen from a dropdown menu that contains all chords
-already in the document."
+  "Insert a chord chosen from among all chords already in the file.
+Uses `completing-read'."
   (interactive)
-  (when (featurep 'dropdown-list)
-    (let* ((choices (chordpro-buffer-chord-list))
-           (selection (dropdown-list choices)))
-      (when selection
-        (chordpro-insert-chord (nth selection choices))))))
+  (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
+    (unless (string-blank-p selection)
+      (chordpro-insert-chord selection))))
 
 (defun chordpro-mouse-choose-insert-chord (event)
   "Insert a chord chosen from a dropdown menu that contains all chords
