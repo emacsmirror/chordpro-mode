@@ -117,7 +117,7 @@ Uses `completing-read' to select among chords in current buffer."
 
 (defun chordpro-normalize-chord (chord)
   "Trim whitespace, capitalize first letter of chord."
-  (capitalize (replace-regexp-in-string "\\s " "" chord)))
+  (capitalize (string-trim chord)))
   
 (defvar chordpro-chord-regexp
   "\\[\\([^][]*\\)\\]"
