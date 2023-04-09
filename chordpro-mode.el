@@ -51,6 +51,23 @@
 
 ;;; Code:
 
+(defvar-keymap chordpro-mode-map
+  :parent  text-mode-map
+  :doc "Keymap for `chordpro-mode' commands."
+  "C-c i" #'chordpro-insert-chord
+  "C-c w" #'chordpro-kill-current-chord
+  "C-c z" #'chordpro-kill-next-chord
+  "C-c c" #'chordpro-copy-current-chord
+  "C-c x" #'chordpro-copy-next-chord
+  "C-c m" #'chordpro-insert-comment
+  "C-c h" #'chordpro-insert-chorus
+  "C-c t" #'chordpro-insert-title
+  "C-c s" #'chordpro-insert-subtitle
+  "C-c l" #'chordpro-choose-insert-chord
+  "C-c r" #'chordpro-choose-replace-current-chord
+  "C-M-n" #'chordpro-current-chord-forward
+  "C-M-p" #'chordpro-current-chord-backward)
+
 (defvar chordpro-font-lock-defaults
   '((("\\(\\[[^]]*\\]\\)" . font-lock-string-face)
      ("^\\(#.*\\)" . font-lock-comment-face)
@@ -67,20 +84,6 @@ Special commands:
   (setq font-lock-defaults chordpro-font-lock-defaults)
   (setq buffer-file-coding-system chordpro-file-encoding)
   (auto-fill-mode -1))
-
-(define-key chordpro-mode-map "\C-ci" 'chordpro-insert-chord)
-(define-key chordpro-mode-map "\C-cw" 'chordpro-kill-current-chord)
-(define-key chordpro-mode-map "\C-cz" 'chordpro-kill-next-chord)
-(define-key chordpro-mode-map "\C-cc" 'chordpro-copy-current-chord)
-(define-key chordpro-mode-map "\C-cx" 'chordpro-copy-next-chord)
-(define-key chordpro-mode-map "\C-cm" 'chordpro-insert-comment)
-(define-key chordpro-mode-map "\C-ch" 'chordpro-insert-chorus)
-(define-key chordpro-mode-map "\C-ct" 'chordpro-insert-title)
-(define-key chordpro-mode-map "\C-cs" 'chordpro-insert-subtitle)
-(define-key chordpro-mode-map "\C-cl" 'chordpro-choose-insert-chord)
-(define-key chordpro-mode-map "\C-cr" 'chordpro-choose-replace-current-chord)
-(define-key chordpro-mode-map "\C-\M-n" 'chordpro-current-chord-forward)
-(define-key chordpro-mode-map "\C-\M-p" 'chordpro-current-chord-backward)
 
 (defun chordpro-insert-chord (chord)
   "Prompt for and insert chord at point, performing some normalization."
