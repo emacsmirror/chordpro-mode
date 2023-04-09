@@ -82,27 +82,10 @@ Special commands:
 (define-key chordpro-mode-map "\C-cr" 'chordpro-choose-replace-current-chord)
 (define-key chordpro-mode-map "\C-\M-n" 'chordpro-current-chord-forward)
 (define-key chordpro-mode-map "\C-\M-p" 'chordpro-current-chord-backward)
-(define-key chordpro-mode-map [C-down-mouse-1] 'mouse-set-point)
-(define-key chordpro-mode-map [C-mouse-1] 'chordpro-kill-current-chord)
-(define-key chordpro-mode-map [C-down-mouse-2] 'mouse-set-point)
-(define-key chordpro-mode-map [C-mouse-2] 'chordpro-mouse-choose-insert-chord)
-(define-key chordpro-mode-map [C-down-mouse-3] 'mouse-set-point)
-(define-key chordpro-mode-map [C-mouse-3] 'chordpro-kill-next-chord)
-(define-key chordpro-mode-map [S-down-mouse-1] 'mouse-set-point)
-(define-key chordpro-mode-map [S-mouse-1] 'chordpro-copy-current-chord)
-(define-key chordpro-mode-map [S-down-mouse-2] 'mouse-set-point)
-(define-key chordpro-mode-map [S-mouse-2] 'chordpro-mouse-insert-chord)
-(define-key chordpro-mode-map [S-down-mouse-3] 'mouse-set-point)
-(define-key chordpro-mode-map [S-mouse-3] 'chordpro-copy-next-chord)
 
 (defun chordpro-insert-chord (chord)
   "Prompt for and insert chord at point, performing some normalization."
   (interactive "*MChord:")
-  (insert "[" (chordpro-normalize-chord chord) "]"))
-
-(defun chordpro-mouse-insert-chord (event chord)
-  "Prompt for and insert chord at point, performing some normalization."
-  (interactive "@e\nMChord:")
   (insert "[" (chordpro-normalize-chord chord) "]"))
 
 (defun chordpro-choose-insert-chord ()
@@ -112,16 +95,6 @@ Uses `completing-read'."
   (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
     (unless (string-blank-p selection)
       (chordpro-insert-chord selection))))
-
-(defun chordpro-mouse-choose-insert-chord (event)
-  "Insert a chord chosen from a dropdown menu that contains all chords
-already in the document."
-  (interactive "@e")
-    (when (featurep 'dropdown-list)
-    (let* ((choices (chordpro-buffer-chord-list))
-           (selection (dropdown-list choices)))
-      (when selection
-        (chordpro-insert-chord (nth selection choices))))))
 
 ;;;This could be done more efficiently, but for most usages
 ;;;it shouldn't be a problem to just scan the whole document each time
