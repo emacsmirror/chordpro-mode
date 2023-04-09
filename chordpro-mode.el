@@ -50,7 +50,6 @@
 ;;
 
 ;;; Code:
-(require 'dropdown-list nil t)
 
 (defvar chordpro-font-lock-defaults
   '((("\\(\\[[^]]*\\]\\)" . font-lock-string-face)
