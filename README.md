@@ -1,4 +1,4 @@
-# Chordpro mode #
+# ChordPro mode #
 
 ## Introduction ##
 
