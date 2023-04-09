@@ -50,8 +50,6 @@
 ;;
 
 ;;; Code:
-
-(require 'derived)
 (require 'dropdown-list nil t)
 
 (defvar chordpro-font-lock-defaults
