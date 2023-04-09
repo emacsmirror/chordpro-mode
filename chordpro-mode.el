@@ -51,21 +51,11 @@
 
 ;;; Code:
 
-(defvar-keymap chordpro-mode-map
-  :parent  text-mode-map
-  :doc "Keymap for `chordpro-mode' commands."
-  "C-c i" #'chordpro-insert-chord
-  "C-c w" #'chordpro-kill-current-chord
-  "C-c z" #'chordpro-kill-next-chord
-  "C-c c" #'chordpro-copy-current-chord
-  "C-c x" #'chordpro-copy-next-chord
-  "C-c m" #'chordpro-insert-comment
-  "C-c h" #'chordpro-insert-chorus
-  "C-c t" #'chordpro-insert-title
-  "C-c s" #'chordpro-insert-subtitle
-  "C-c r" #'chordpro-choose-replace-current-chord
-  "C-M-n" #'chordpro-current-chord-forward
-  "C-M-p" #'chordpro-current-chord-backward)
+;;;; Internal variables
+
+(defvar chordpro-chord-regexp
+  "\\[\\([^][]*\\)\\]"
+  "Regexp for matching a chord without regard for the point.")
 
 (defvar chordpro-font-lock-defaults
   '((("\\(\\[[^]]*\\]\\)" . font-lock-string-face)
@@ -74,12 +64,7 @@
      ("\\({title[^}]*}\\)" . font-lock-keyword-face)
      ("\\({[^}]*}\\)" . font-lock-variable-name-face))))
 
-(define-derived-mode chordpro-mode text-mode "ChordPro"
-  "Major mode for editing Chordpro files.
-Special commands:
-\\{chordpro-mode-map}"
-  (setq font-lock-defaults chordpro-font-lock-defaults)
-  (auto-fill-mode -1))
+;;;; Commands
 
 (defun chordpro--insert-chord (chord)
   "Normalize then insert CHORD at point."
@@ -121,10 +106,6 @@ Uses `completing-read' to select among chords in current buffer."
     ;; Without splitting the string, `capitalize' would incorrectly
     ;; return qualified chords like "A#Dim" instead of "A#dim".
     (concat (capitalize (substring trimmed-chord 0 1)) (substring trimmed-chord 1))))
-
-(defvar chordpro-chord-regexp
-  "\\[\\([^][]*\\)\\]"
-  "Regexp for matching a chord without regard for the point.")
 
 (defun chordpro-kill-next-chord ()
   "Kill the next full chord after the point and move point there."
@@ -233,7 +214,34 @@ the start and end of the chord."
   (interactive)
   (insert "{start-of-chorus}\n\n{end-of-chorus}\n")
   (search-backward "\n" nil nil 2))
-  
+
+;;;; Major mode
+
+(defvar-keymap chordpro-mode-map
+  :parent  text-mode-map
+  :doc "Keymap for `chordpro-mode' commands."
+  "C-c i" #'chordpro-insert-chord
+  "C-c w" #'chordpro-kill-current-chord
+  "C-c z" #'chordpro-kill-next-chord
+  "C-c c" #'chordpro-copy-current-chord
+  "C-c x" #'chordpro-copy-next-chord
+  "C-c m" #'chordpro-insert-comment
+  "C-c h" #'chordpro-insert-chorus
+  "C-c t" #'chordpro-insert-title
+  "C-c s" #'chordpro-insert-subtitle
+  "C-c r" #'chordpro-choose-replace-current-chord
+  "C-M-n" #'chordpro-current-chord-forward
+  "C-M-p" #'chordpro-current-chord-backward)
+
+(define-derived-mode chordpro-mode text-mode "ChordPro"
+  "Major mode for editing Chordpro files.
+Special commands:
+\\{chordpro-mode-map}"
+  (setq font-lock-defaults chordpro-font-lock-defaults)
+  (auto-fill-mode -1))
+
+;;;; Footer
+
 (provide 'chordpro)
 
 ;;; chordpro-mode.el ends here
