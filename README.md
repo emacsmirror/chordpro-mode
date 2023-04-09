@@ -87,3 +87,16 @@ You can get a live preview of the exported PDF if you run an PDF
 viewer like [Zathura](https://pwmt.org/projects/zathura/) which
 automatically re-renders the document when the underlying file
 changes.
+
+## Changelog
+
+### 2.0-pre
+
+- Forked in 2023
+- Add `chordpro-export` function
+- Remove broken mouse keybindings
+- Clean up obsolete code
+
+### 1.0
+
+- Initial version created by Howard Ding in 2014
