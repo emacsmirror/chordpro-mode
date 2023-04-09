@@ -69,21 +69,4 @@ Most of the keyboard commands use the Ctrl-c prefix.
 * Ctrl-c t : Insert a chordpro title
 * Ctrl-c s : Insert a chordpro subtitle
 
-### Mouse ###
-
-Some of the commands can be invoked with the mouse. I still haven't
-decided what I think the best way to go is, but these are some starting
-experiments. All of them have corresponding keyboard commands (whether
-specific to this mode or standard emacs commands).
-
-* Ctrl-mouse-1 : Kills current chord
-* Ctrl-mouse-2 : Insert a chord at the point, chosen from a dropdown list
-  of chords already in the document. Note that unfortunately as currently
-  implemented the mouse click can only bring up the menu - you still need
-  to use the keyboard to perform the selection.
-* Ctrl-mouse-3 : Kills next chord
-* Shift-mouse-1 : Copies current chord
-* Shift-mouse-2 : Insert chord
-* Shift-mouse-3 : Copies next chord
-
 
