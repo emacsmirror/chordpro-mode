@@ -69,4 +69,21 @@ Most of the keyboard commands use the Ctrl-c prefix.
 * Ctrl-c t : Insert a chordpro title
 * Ctrl-c s : Insert a chordpro subtitle
 
+### Export to PDF
 
+If the `chordpro` command is in your `$PATH` ([installation
+instructions](https://www.chordpro.org/chordpro/ChordPro-Installation.html)),
+`M-x chordpro-export` will export the current ChordPro buffer to PDF.
+
+### Live export
+
+This hook runs `chordpro-export` each time you save the buffer:
+
+```
+(add-hook 'after-save-hook #'chordpro-export nil t)
+```
+
+You can get a live preview of the exported PDF if you run an PDF
+viewer like [Zathura](https://pwmt.org/projects/zathura/) which
+automatically re-renders the document when the underlying file
+changes.
