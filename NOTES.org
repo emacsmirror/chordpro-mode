@@ -1,5 +1,6 @@
 * Design ideas
 ** Better fontification
-See: https://github.com/hading/chordpro-mode/issues/1
+See: <https://github.com/hading/chordpro-mode/issues/1>
 ** Add ~auto-insert~-like functionality with prompts to enter title, artist, etc.
 ** Export functionality
+See: <https://github.com/hading/chordpro-mode/issues/2>
