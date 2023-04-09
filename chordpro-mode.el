@@ -63,7 +63,6 @@
   "C-c h" #'chordpro-insert-chorus
   "C-c t" #'chordpro-insert-title
   "C-c s" #'chordpro-insert-subtitle
-  "C-c l" #'chordpro-choose-insert-chord
   "C-c r" #'chordpro-choose-replace-current-chord
   "C-M-n" #'chordpro-current-chord-forward
   "C-M-p" #'chordpro-current-chord-backward)
@@ -85,18 +84,17 @@ Special commands:
   (setq buffer-file-coding-system chordpro-file-encoding)
   (auto-fill-mode -1))
 
-(defun chordpro-insert-chord (chord)
-  "Prompt for and insert chord at point, performing some normalization."
-  (interactive "*MChord:")
+(defun chordpro--insert-chord (chord)
+  "Normalize then insert CHORD at point."
   (insert "[" (chordpro-normalize-chord chord) "]"))
 
-(defun chordpro-choose-insert-chord ()
+(defun chordpro-insert-chord ()
   "Insert a chord chosen from among all chords already in the file.
 Uses `completing-read'."
   (interactive)
   (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
     (unless (string-blank-p selection)
-      (chordpro-insert-chord selection))))
+      (chordpro--insert-chord selection))))
 
 (defun chordpro-buffer-chord-list ()
   "Return a list of the chords currently used in the document."
@@ -118,7 +116,7 @@ Uses `completing-read' to select among chords in current buffer."
   (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
     (unless (string-blank-p selection)
       (chordpro-delete-current-chord)
-      (chordpro-insert-chord selection))))
+      (chordpro--insert-chord selection))))
 
 (defun chordpro-normalize-chord (chord)
   "Trim whitespace, capitalize first letter of chord."
