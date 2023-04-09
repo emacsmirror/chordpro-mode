@@ -74,7 +74,7 @@
      ("\\({title[^}]*}\\)" . font-lock-keyword-face)
      ("\\({[^}]*}\\)" . font-lock-variable-name-face))))
 
-(define-derived-mode chordpro-mode text-mode "Chordpro"
+(define-derived-mode chordpro-mode text-mode "ChordPro"
   "Major mode for editing Chordpro files.
 Special commands:
 \\{chordpro-mode-map}"
