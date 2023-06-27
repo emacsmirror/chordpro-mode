@@ -252,6 +252,7 @@ external command."
   "C-M-n" #'chordpro-current-chord-forward
   "C-M-p" #'chordpro-current-chord-backward)
 
+;;;###autoload
 (define-derived-mode chordpro-mode text-mode "ChordPro"
   "Major mode for editing Chordpro files.
 Special commands:
