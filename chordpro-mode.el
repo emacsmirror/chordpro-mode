@@ -222,17 +222,19 @@ the start and end of the chord."
 With a prefix argument, prompt for chordpro switches before running
 external command."
   (interactive "P")
-  (let* ((default-switches (concat "--output=" (file-name-with-extension (buffer-file-name) "pdf") " " (buffer-file-name)))
-         (switches (split-string (if arg
-                                     (read-string "ChordPro switches: " default-switches nil)
-                                   default-switches)))
-         (buffer (get-buffer-create " *ChordPro*")))
-    (unwind-protect
-        (unless (zerop (apply #'call-process "chordpro" nil (list buffer t) nil switches))
-          (error "Unable to export ChordPro document: %S"
-                 (with-current-buffer buffer
-                   (string-trim-right (buffer-string)))))
-      (kill-buffer buffer))))
+  (let* ((input (buffer-file-name))
+         (output (file-name-with-extension input "pdf"))
+         (default-switches (concat "--output=" "'" output "' '" input "'"))
+         (switches (split-string-shell-command
+                    (if arg
+                        (read-string "ChordPro switches: " default-switches)
+                      default-switches)))
+         (buffer (with-current-buffer (get-buffer-create " *ChordPro output/errors*")
+                   (erase-buffer)
+                   (current-buffer))))
+    (if (zerop (apply #'call-process "chordpro" nil buffer nil switches))
+        (message "Successfully exported to PDF: %s" output)
+      (error "Unable to export ChordPro document. For details, see: %S" buffer))))
 
 ;;;; Major mode
 
