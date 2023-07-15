@@ -1,59 +1,34 @@
-# ChordPro mode #
+# ChordPro mode
 
-## Introduction ##
+## Introduction
 
-This is an Emacs major mode, derived from text-mode, for editing files
-in the [ChordPro
-format](https://www.chordpro.org/chordpro/ChordPro-File-Format-Specification.html).
+Emacs major mode for editing files in the [ChordPro
+format](https://www.chordpro.org/chordpro/chordpro-introduction/).
 
-It is currently somewhat crude, but it does simplify a few things and
-I do intend to keep adding any refinements that I find useful in my
-work with Chordpro files. The font-lock is based off a previously
-existing chordpro mode, but this provides more operations.
-
-I'm still developing and experimenting with this, so as I go along I
-might decide that different mouse or keybindings work better and will
-probably provide more functionality as I see things that will make the
-work that I do easier. There are some fairly obvious things left to do
-and I'll add them I need them. If you have any ideas feel free to
-create an issue (or even better do it and send a pull request).
-
-## Installation ##
+## Installation
 
 Clone this repository, then manually install `chordpro-mode` with `M-x
 package-install-file`.
 
-## Use ##
+## Usage
 
 Files with the `.cho` extension will automatically be opened with `chordpro-mode`.
 
-### Keyboard ###
+### Editing
 
-Most of the keyboard commands use the Ctrl-c prefix.
-
-* Ctrl-c i : Insert a chord at the point. You'll be prompted for the
-  chord name in the minibuffer. The brackets will automatically be
+* `C-c i` : Insert a chord at point. Brackets will automatically be
   inserted, space trimmed, and the chord capitalized.
-* Ctrl-c l : Insert a chord at the point, chosen from a dropdown list
-  of chords already in the document.
-* Ctrl-c w : Kills the current chord. The current chord is one
-  containing the point - because of the way emacs works this means
-  that this command doesn't do what you want if the cursor is on the
-  opening [ of a chord, only if it is between that and the closing ],
-  inclusive. But there's another command for that.
-* Ctrl-c z : Kills the next chord. Finds the next chord after the
-  point and kills it. This one works if you are on the opening
-  [, or if you are between chords.
-* Ctrl-c r : Replace the current chord with one chosen from a dropdown
-  list of chords already in the document.
-* Ctrl-c c : Copy the current chord
-* Ctrl-c x : Copy the next chord
-* Ctrl-Meta-n : Move current chord forward PREFIX chars. 
-* Ctrl-Meta-p : Move current chord backward PREFIX chars
-* Ctrl-c h : Insert a chordpro comment
-* Ctrl-c h : Insert a chordpro chorus
-* Ctrl-c t : Insert a chordpro title
-* Ctrl-c s : Insert a chordpro subtitle
+* `C-c w` : Kill the chord at point.
+* `C-c z` : Kill the next chord after point.
+* `C-c r` : Replace the chord at point with another chord.
+* `C-c c` : Copy the chord at point
+* `C-c x` : Copy the next chord
+* `C-M-n` : Move chord at point forward PREFIX chars.
+* `C-M-p` : Move chord at point backward PREFIX chars
+* `C-c h` : Insert a comment directive
+* `C-c h` : Insert a chorus directive
+* `C-c t` : Insert a title directive
+* `C-c s` : Insert a subtitle directive
 
 ### Export to PDF
 
