@@ -124,11 +124,6 @@ Uses `completing-read' to select among chords in current buffer."
     (when (re-search-forward chordpro-chord-regexp nil t)
       (copy-region-as-kill (match-beginning 0) (match-end 0)))))
 
-(put 'chordpro-chord 'bounds-of-thing-at-point
-     (lambda ()
-       (when (thing-at-point-looking-at chordpro-chord-regexp 10)
-         (cons (match-beginning 0) (match-end 0)))))
-
 (defun chordpro-kill-chord-at-point ()
   "Kill the chord surrounding the point, if there is one."
   (interactive)
@@ -244,6 +239,11 @@ Special commands:
 
 ;;;###autoload
 (cl-pushnew '("\\.cho\\'" . chordpro-mode) auto-mode-alist :test #'equal)
+
+(put 'chordpro-chord 'bounds-of-thing-at-point
+     (lambda ()
+       (when (thing-at-point-looking-at chordpro-chord-regexp 10)
+         (cons (match-beginning 0) (match-end 0)))))
 
 ;;;; Footer
 
