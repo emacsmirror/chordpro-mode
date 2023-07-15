@@ -20,24 +20,8 @@ create an issue (or even better do it and send a pull request).
 
 ## Installation ##
 
-Copy chordpro-mode.el into somewhere in your emacs load path (I put it
-in ~/.emacs.d).
-
-Then put something like this into your .emacs file (I use the .pro
-extension for such files):
-
-    (setq auto-mode-alist (cons '("\\.pro$" . chordpro-mode) auto-mode-alist))
-    (autoload 'chordpro-mode "chordpro-mode")
-
-Now when you visit a .pro file you should automatically get
-chordpro-mode. The file will automatically be saved in latin-1
-encoding (you can change this by setting the chordpro-file-encoding
-variable in your .emacs, but you probably shouldn't as Chordii
-currently expects latin-1 encoded files).
-
-Some of the functions use dropdown-list.el, which can be installed
-with package-list-packages in modern emacs. If you don't have this
-installed they'll just do nothing.
+Clone this repository, then manually install `chordpro-mode` with `M-x
+package-install-file`.
 
 ## Use ##
 
