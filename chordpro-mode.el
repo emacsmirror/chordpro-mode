@@ -3,7 +3,7 @@
 ;; Author: Howard Ding <hading2@gmail.com>
 ;; Author: Joseph Turner <public@breatheoutbreathe.in>
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "26.1") (compat "29.1.4.1"))
+;; Package-Requires: ((emacs "28.1") (compat "29.1.4.1"))
 ;; Homepage: https://git.sr.ht/~breatheoutbreathein/chordpro-mode.el/
 ;; Keywords: convenience
 
