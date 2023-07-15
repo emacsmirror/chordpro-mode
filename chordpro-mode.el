@@ -222,9 +222,9 @@ the start and end of the chord."
 With a prefix argument, prompt for chordpro switches before running
 external command."
   (interactive "P")
-  (let* ((input (buffer-file-name))
+  (let* ((input (shell-quote-argument (buffer-file-name)))
          (output (file-name-with-extension input "pdf"))
-         (default-switches (concat "--output=" "'" output "' '" input "'"))
+         (default-switches (concat "--output=" output " " input))
          (switches (split-string-shell-command
                     (if arg
                         (read-string "ChordPro switches: " default-switches)
