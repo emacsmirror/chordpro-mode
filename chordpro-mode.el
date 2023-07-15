@@ -261,6 +261,6 @@ Special commands:
 
 ;;;; Footer
 
-(provide 'chordpro)
+(provide 'chordpro-mode)
 
 ;;; chordpro-mode.el ends here
