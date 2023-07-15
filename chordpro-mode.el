@@ -53,6 +53,7 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'thingatpt)
 
 ;;;; Internal variables
 
@@ -100,7 +101,7 @@ Uses `completing-read' to select among chords in current buffer."
   (interactive)
   (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
     (unless (string-blank-p selection)
-      (chordpro-delete-current-chord)
+      (chordpro-delete-chord-at-point)
       (chordpro--insert-chord selection))))
 
 (defun chordpro-normalize-chord (chord)
@@ -127,71 +128,51 @@ Uses `completing-read' to select among chords in current buffer."
       (if start
           (copy-region-as-kill (match-beginning 0) (match-end 0))))))
 
-(defun chordpro-kill-current-chord ()
+(put 'chordpro-chord 'bounds-of-thing-at-point
+     (lambda ()
+       (when (thing-at-point-looking-at chordpro-chord-regexp 10)
+         (cons (match-beginning 0) (match-end 0)))))
+
+(defun chordpro-kill-chord-at-point ()
   "Kill the chord surrounding the point, if there is one."
   (interactive)
-  (chordpro-operate-on-current-chord 'kill-region))
+  (when-let ((bounds (bounds-of-thing-at-point 'chordpro-chord)))
+    (kill-region (car bounds) (cdr bounds))))
 
-(defun chordpro-delete-current-chord ()
-  "Delete the chord surrounding the point, if there is one."
+(defun chordpro-delete-chord-at-point ()
+  "Delete the chord at point, if there is one."
   (interactive)
-  (chordpro-operate-on-current-chord 'delete-region))
+  (when-let ((bounds (bounds-of-thing-at-point 'chordpro-chord)))
+    (delete-region (car bounds) (cdr bounds))))
 
-(defun chordpro-copy-current-chord ()
-  "Copy the chord surrounding the point, if there is one."
+(defun chordpro-copy-chord-at-point ()
+  "Copy the chord at point, if there is one."
   (interactive)
-  (chordpro-operate-on-current-chord 'copy-region-as-kill))
+  (when-let ((chord (thing-at-point 'chordpro-chord)))
+    (kill-new chord)))
 
-(defun chordpro-operate-on-current-chord (function)
-  "Call a two argument function on the current chord, if it exists, with
-the start and end of the chord."
-  (let ((current-position (point-marker)))
-    (save-excursion
-      (let ((start-found (search-backward "[" nil t)))
-        (if start-found
-            (let* ((start (point-marker))
-                   (end-found (search-forward "]" nil t)))
-              (if end-found
-                  (let ((end (point-marker)))
-                    (if (and (<  start current-position)
-                             (< current-position end))
-                        (funcall function start end))))))))))
-
-(defun chordpro-current-chord-forward (n)
-  "Move the current chord forward n characters."
+(defun chordpro-transpose-chord (n)
+  "Move the current chord forward N characters."
   (interactive "*p")
-  (let ((current-position (point-marker))
-        (chord-offset (chordpro-position-in-current-chord)))
-    (set-marker-insertion-type current-position t)
-    (chordpro-operate-on-current-chord
-     (lambda (start end)
-       (kill-region start end)
-       (forward-char n)
-       (yank)))
-    ;;I have to assume there's a better way to do this, but this works
-    ;;Get back in the chord and then move to the offset
-    (if (> n 0)
-        (goto-char (+ current-position n 1))
-      (goto-char (- current-position (+ n 4))))
-    (chordpro-move-to-position-in-current-chord chord-offset)))
-     
-(defun chordpro-current-chord-backward (n)
-  "Move the current chord backward n characters."
+  (when-let (bounds (bounds-of-thing-at-point 'chordpro-chord))
+    (pcase-let* ((`(,start . ,end) bounds)
+                 (orig (point))
+                 (offset (- end orig)))
+      (condition-case nil
+          (atomic-change-group
+            ;; Use `atomic-change-group' in case `forward-char' attempts
+            ;; to place point before `point-min' or after `point-max'.
+            (kill-region start end)
+            (forward-char n)
+            (yank)
+            (backward-char offset))
+        (error (goto-char orig)
+               (error "Unable to transpose chord"))))))
+
+(defun chordpro-transpose-chord-backward (n)
+  "Move the current chord backward N characters."
   (interactive "*p")
-  (chordpro-current-chord-forward (- n)))
-
-(defun chordpro-move-to-position-in-current-chord (n)
-  "Move to the nth character in the current chord."
-  (search-backward "[")
-  (forward-char n))
-
-(defun chordpro-position-in-current-chord ()
-  "Determine the offset inside the current chord."
-  (interactive)
-  (let ((current-position (point)))
-    (save-excursion
-      (search-backward "[")
-      (- current-position (point)))))
+  (chordpro-transpose-chord (- n)))
 
 (defun chordpro-insert-single-directive (text)
   (insert "{" text ": }\n")
@@ -245,17 +226,17 @@ external command."
   :parent  text-mode-map
   :doc "Keymap for `chordpro-mode' commands."
   "C-c i" #'chordpro-insert-chord
-  "C-c w" #'chordpro-kill-current-chord
+  "C-c w" #'chordpro-kill-chord-at-point
   "C-c z" #'chordpro-kill-next-chord
-  "C-c c" #'chordpro-copy-current-chord
+  "C-c c" #'chordpro-copy-chord-at-point
   "C-c x" #'chordpro-copy-next-chord
   "C-c m" #'chordpro-insert-comment
   "C-c h" #'chordpro-insert-chorus
   "C-c t" #'chordpro-insert-title
   "C-c s" #'chordpro-insert-subtitle
   "C-c r" #'chordpro-choose-replace-current-chord
-  "C-M-n" #'chordpro-current-chord-forward
-  "C-M-p" #'chordpro-current-chord-backward)
+  "C-M-n" #'chordpro-transpose-chord
+  "C-M-p" #'chordpro-transpose-chord-backward)
 
 ;;;###autoload
 (define-derived-mode chordpro-mode text-mode "ChordPro"

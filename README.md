@@ -81,6 +81,7 @@ changes.
 - Forked in 2023
 - Add `chordpro-export` function
 - Remove broken mouse keybindings
+- Use thingatpt for chords
 - Clean up obsolete code
 - Add `.cho` to auto-mode-alist
 
