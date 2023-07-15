@@ -81,7 +81,7 @@
   (insert "[" (chordpro-normalize-chord chord) "]"))
 
 (defun chordpro-normalize-chord (chord)
-  "Trim whitespace, capitalize first letter of chord."
+  "Trim whitespace, capitalize first letter of CHORD."
   (let ((trimmed-chord (string-trim chord)))
     ;; Without splitting the string, `capitalize' would incorrectly
     ;; return qualified chords like "A#Dim" instead of "A#dim".
@@ -180,6 +180,7 @@ Uses `completing-read' to select among chords in current buffer."
 ;;;;; Inserting directives
 
 (defun chordpro-insert-single-directive (text)
+  "Insert TEXT directive."
   (insert "{" text ": }\n")
   (search-backward "}"))
 
@@ -208,7 +209,7 @@ Uses `completing-read' to select among chords in current buffer."
 
 (defun chordpro-export (&optional arg)
   "Export current buffer as PDF with ChordPro.
-With a prefix argument, prompt for chordpro switches before running
+With a prefix ARG, prompt for chordpro switches before running
 external command."
   (interactive "P")
   (let* ((input (shell-quote-argument (buffer-file-name)))
