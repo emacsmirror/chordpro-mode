@@ -81,13 +81,17 @@
     ;; return qualified chords like "A#Dim" instead of "A#dim".
     (concat (capitalize (substring trimmed-chord 0 1)) (substring trimmed-chord 1))))
 
+(defun chordpro-complete-chord ()
+  "Complete a chord from a list of chord already in the buffer."
+  (completing-read "Choose chord: " (chordpro-buffer-chord-list)))
+
 ;;;; Commands
 
 (defun chordpro-insert-chord ()
   "Insert a chord chosen from among all chords already in the file.
 Uses `completing-read'."
   (interactive)
-  (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
+  (let ((selection (chordpro-complete-chord)))
     (unless (string-blank-p selection)
       (chordpro--insert-chord selection))))
 
@@ -108,7 +112,7 @@ Uses `completing-read'."
   "Replace the current chord.
 Uses `completing-read' to select among chords in current buffer."
   (interactive)
-  (let ((selection (completing-read "Choose chord: " (chordpro-buffer-chord-list))))
+  (let ((selection (chordpro-complete-chord)))
     (unless (string-blank-p selection)
       (chordpro-delete-chord-at-point)
       (chordpro--insert-chord selection))))
