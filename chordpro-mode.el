@@ -51,6 +51,8 @@
 
 ;;; Code:
 
+(require 'cl-lib)
+
 ;;;; Internal variables
 
 (defvar chordpro-chord-regexp
