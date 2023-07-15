@@ -114,19 +114,15 @@ Uses `completing-read' to select among chords in current buffer."
 (defun chordpro-kill-next-chord ()
   "Kill the next full chord after the point and move point there."
   (interactive)
-  (let ((start (re-search-forward chordpro-chord-regexp nil t)))
-    (if start
-        (progn 
-          (kill-region (match-beginning 0) (match-end 0))
-          (goto-char (match-beginning 0))))))
+  (when (re-search-forward chordpro-chord-regexp nil t)
+    (kill-region (match-beginning 0) (match-end 0))))
 
 (defun chordpro-copy-next-chord ()
   "Copy the next full chord after the point to the kill ring."
   (interactive)
   (save-excursion
-    (let ((start (re-search-forward chordpro-chord-regexp nil t)))
-      (if start
-          (copy-region-as-kill (match-beginning 0) (match-end 0))))))
+    (when (re-search-forward chordpro-chord-regexp nil t)
+      (copy-region-as-kill (match-beginning 0) (match-end 0)))))
 
 (put 'chordpro-chord 'bounds-of-thing-at-point
      (lambda ()
