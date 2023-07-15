@@ -3,6 +3,7 @@
 ;; Author: Howard Ding <hading2@gmail.com>
 ;; Author: Joseph Turner <public@breatheoutbreathe.in>
 ;; Version: 1.0.0
+;; Package-Requires: ((emacs "26.1") (compat "29.1.4.1"))
 ;; Keywords: convenience
 
 ;; Copyright (C) 2023 Joseph Turner
@@ -54,6 +55,7 @@
 
 (require 'cl-lib)
 (require 'thingatpt)
+(require 'compat)
 
 ;;;; Internal variables
 
