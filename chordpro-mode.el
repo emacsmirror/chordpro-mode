@@ -2,6 +2,7 @@
 
 ;; Author: Howard Ding <hading2@gmail.com>
 ;; Author: Joseph Turner <public@breatheoutbreathe.in>
+;; Version: 1.0.0
 ;; Keywords: convenience
 
 ;; Copyright (C) 2023 Joseph Turner
