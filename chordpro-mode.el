@@ -264,6 +264,9 @@ Special commands:
   (setq font-lock-defaults chordpro-font-lock-defaults)
   (auto-fill-mode -1))
 
+;;;###autoload
+(cl-pushnew '("\\.cho\\'" . chordpro-mode) auto-mode-alist :test #'equal)
+
 ;;;; Footer
 
 (provide 'chordpro)

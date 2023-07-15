@@ -41,6 +41,8 @@ installed they'll just do nothing.
 
 ## Use ##
 
+Files with the `.cho` extension will automatically be opened with `chordpro-mode`.
+
 ### Keyboard ###
 
 Most of the keyboard commands use the Ctrl-c prefix.
@@ -96,6 +98,7 @@ changes.
 - Add `chordpro-export` function
 - Remove broken mouse keybindings
 - Clean up obsolete code
+- Add `.cho` to auto-mode-alist
 
 ### 1.0
 
