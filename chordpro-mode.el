@@ -68,11 +68,20 @@
      ("\\({title[^}]*}\\)" . font-lock-keyword-face)
      ("\\({[^}]*}\\)" . font-lock-variable-name-face))))
 
-;;;; Commands
+;;;; Functions
 
 (defun chordpro--insert-chord (chord)
   "Normalize then insert CHORD at point."
   (insert "[" (chordpro-normalize-chord chord) "]"))
+
+(defun chordpro-normalize-chord (chord)
+  "Trim whitespace, capitalize first letter of chord."
+  (let ((trimmed-chord (string-trim chord)))
+    ;; Without splitting the string, `capitalize' would incorrectly
+    ;; return qualified chords like "A#Dim" instead of "A#dim".
+    (concat (capitalize (substring trimmed-chord 0 1)) (substring trimmed-chord 1))))
+
+;;;; Commands
 
 (defun chordpro-insert-chord ()
   "Insert a chord chosen from among all chords already in the file.
@@ -103,13 +112,6 @@ Uses `completing-read' to select among chords in current buffer."
     (unless (string-blank-p selection)
       (chordpro-delete-chord-at-point)
       (chordpro--insert-chord selection))))
-
-(defun chordpro-normalize-chord (chord)
-  "Trim whitespace, capitalize first letter of chord."
-  (let ((trimmed-chord (string-trim chord)))
-    ;; Without splitting the string, `capitalize' would incorrectly
-    ;; return qualified chords like "A#Dim" instead of "A#dim".
-    (concat (capitalize (substring trimmed-chord 0 1)) (substring trimmed-chord 1))))
 
 (defun chordpro-kill-next-chord ()
   "Kill the next full chord after the point and move point there."
@@ -164,6 +166,8 @@ Uses `completing-read' to select among chords in current buffer."
   "Move the current chord backward N characters."
   (interactive "*p")
   (chordpro-transpose-chord (- n)))
+
+;;;;; Inserting directives
 
 (defun chordpro-insert-single-directive (text)
   (insert "{" text ": }\n")
