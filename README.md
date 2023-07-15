@@ -51,7 +51,7 @@ changes.
 
 ## Changelog
 
-### 2.0-pre
+### 2.0
 
 - Forked in 2023
 - Add `chordpro-export` function
