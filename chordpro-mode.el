@@ -59,6 +59,7 @@
 
 (require 'cl-lib)
 (require 'thingatpt)
+(require 'subr-x)
 (require 'compat)
 
 ;;;; Internal variables
