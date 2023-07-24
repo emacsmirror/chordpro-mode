@@ -232,7 +232,7 @@ external command."
 (defvar-keymap chordpro-mode-map
   :parent  text-mode-map
   :doc "Keymap for `chordpro-mode' commands."
-  "C-c i" #'chordpro-insert-chord
+  "["     #'chordpro-insert-chord
   "C-c w" #'chordpro-kill-chord-at-point
   "C-c z" #'chordpro-kill-next-chord
   "C-c c" #'chordpro-copy-chord-at-point

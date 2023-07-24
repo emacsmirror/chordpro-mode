@@ -16,8 +16,9 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 
 ### Editing
 
-* `C-c i` : Insert a chord at point. Brackets will automatically be
-  inserted, space trimmed, and the chord capitalized.
+* `[`     : Insert a chord at point. Brackets will automatically be
+  inserted, space trimmed, and the chord capitalized. (To insert a
+  literal `[` characters, use `C-q [`)
 * `C-c w` : Kill the chord at point.
 * `C-c z` : Kill the next chord after point.
 * `C-c r` : Replace the chord at point with another chord.
