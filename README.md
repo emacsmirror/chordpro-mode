@@ -16,21 +16,21 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 
 ### Editing
 
-* `[`     : Insert a chord at point. Brackets will automatically be
+* `[`        : Insert a chord at point. Brackets will automatically be
   inserted, space trimmed, and the chord capitalized. (To insert a
   literal `[` characters, use `C-q [`)
-* `C-c w` : Kill the chord at point.
-* `C-c z` : Kill the next chord after point.
-* `C-c r` : Replace the chord at point with another chord.
-* `C-c c` : Copy the chord at point
-* `C-c x` : Copy the next chord
-* `C-M-n` : Move chord at point forward PREFIX chars.
-* `C-M-p` : Move chord at point backward PREFIX chars
-* `C-c m` : Insert a comment directive
-* `C-c h` : Insert a chorus directive
-* `C-c t` : Insert a title directive
-* `C-c s` : Insert a subtitle directive
-* `C-c C-c` : Export ChordPro file to PDF
+* `C-c w`    : Kill the chord at point.
+* `C-c z`    : Kill the next chord after point.
+* `C-c r`    : Replace the chord at point with another chord.
+* `C-c c`    : Copy the chord at point
+* `C-c x`    : Copy the next chord
+* `C-M-n`    : Move chord at point forward PREFIX chars.
+* `C-M-p`    : Move chord at point backward PREFIX chars
+* `C-c m`    : Insert a comment directive
+* `C-c h`    : Insert a chorus directive
+* `C-c t`    : Insert a title directive
+* `C-c s`    : Insert a subtitle directive
+* `C-c C-c`  : Export ChordPro file to PDF
 
 ### Export to PDF
 
