@@ -214,6 +214,30 @@ Uses `completing-read' to select among chords in current buffer."
 
 ;;;; ChordPro integration
 
+;;;###autoload
+(defun chordpro-a2crd (start end &optional flush-empty-lines)
+  "Replace buffer or active region with ChordPro format.
+This is useful for converting text with chords on top of lyrics,
+e.g. from Ultimate Guitar, to proper ChordPro format with chords
+embedded in the lyrics.
+
+Note that chords and their lyrics must not be separated by a
+newline. With FLUSH-EMPTY-LINES or universal prefix argument
+\\[universal-argument], delete empty lines before running a2crd.
+
+In non-interactive use, START and END must be point markers (not
+numbers) when FLUSH-EMPTY-LINES is non-nil, since `flush-lines'
+will change the region boundaries."
+  (interactive
+   (let ((start (if (use-region-p) (region-beginning) (point-min-marker)))
+         (end (if (use-region-p) (region-end) (point-max-marker))))
+     (list start end current-prefix-arg)))
+  (when flush-empty-lines
+    (goto-char start)
+    (flush-lines "^$" start end))
+  (shell-command-on-region start end
+			   "chordpro --a2crd --fragment -- -" 'insert t))
+
 (defun chordpro-export (&optional arg)
   "Export current buffer as PDF with ChordPro.
 With a prefix ARG, prompt for chordpro switches before running
