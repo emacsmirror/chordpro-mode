@@ -274,7 +274,8 @@ external command."
   "C-c s" #'chordpro-insert-subtitle
   "C-c r" #'chordpro-choose-replace-current-chord
   "C-M-n" #'chordpro-transpose-chord
-  "C-M-p" #'chordpro-transpose-chord-backward)
+  "C-M-p" #'chordpro-transpose-chord-backward
+  "C-c C-c" #'chordpro-export)
 
 ;;;###autoload
 (define-derived-mode chordpro-mode text-mode "ChordPro"
