@@ -263,19 +263,19 @@ external command."
 (defvar-keymap chordpro-mode-map
   :parent  text-mode-map
   :doc "Keymap for `chordpro-mode' commands."
-  "["     #'chordpro-insert-chord
-  "C-c w" #'chordpro-kill-chord-at-point
-  "C-c z" #'chordpro-kill-next-chord
-  "C-c c" #'chordpro-copy-chord-at-point
-  "C-c x" #'chordpro-copy-next-chord
-  "C-c m" #'chordpro-insert-comment
-  "C-c h" #'chordpro-insert-chorus
-  "C-c t" #'chordpro-insert-title
-  "C-c s" #'chordpro-insert-subtitle
-  "C-c r" #'chordpro-choose-replace-current-chord
-  "C-M-n" #'chordpro-transpose-chord
-  "C-M-p" #'chordpro-transpose-chord-backward
-  "C-c C-c" #'chordpro-export)
+  "["        #'chordpro-insert-chord
+  "C-c w"    #'chordpro-kill-chord-at-point
+  "C-c z"    #'chordpro-kill-next-chord
+  "C-c c"    #'chordpro-copy-chord-at-point
+  "C-c x"    #'chordpro-copy-next-chord
+  "C-c m"    #'chordpro-insert-comment
+  "C-c h"    #'chordpro-insert-chorus
+  "C-c t"    #'chordpro-insert-title
+  "C-c s"    #'chordpro-insert-subtitle
+  "C-c r"    #'chordpro-choose-replace-current-chord
+  "C-M-n"    #'chordpro-transpose-chord
+  "C-M-p"    #'chordpro-transpose-chord-backward
+  "C-c C-c"  #'chordpro-export)
 
 ;;;###autoload
 (define-derived-mode chordpro-mode text-mode "ChordPro"
