@@ -30,6 +30,7 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 * `C-c h` : Insert a chorus directive
 * `C-c t` : Insert a title directive
 * `C-c s` : Insert a subtitle directive
+* `C-c C-c` : Export ChordPro file to PDF
 
 ### Export to PDF
 
