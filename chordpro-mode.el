@@ -238,6 +238,7 @@ will change the region boundaries."
   (shell-command-on-region start end
 			   "chordpro --a2crd --fragment -- -" 'insert t))
 
+;;;###autoload
 (defun chordpro-export (&optional arg)
   "Export current buffer as PDF with ChordPro.
 With a prefix ARG, prompt for chordpro switches before running
