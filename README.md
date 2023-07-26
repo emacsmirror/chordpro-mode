@@ -32,6 +32,45 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 * `C-c s`    : Insert a subtitle directive
 * `C-c C-c`  : Export ChordPro file to PDF
 
+### Generate ChordPro files
+
+Certain websites, such as [Ultimate
+Guitar](https://www.ultimate-guitar.com/) provide tabs with lyrics and
+chords in a format that the `chordpro` program can convert into
+ChordPro files:
+
+```
+        D        G      D
+
+Swing low, sweet chariot,
+
+                       A7
+
+Comin' for to carry me home.
+
+       D7        G      D
+
+Swing low, sweet chariot,
+
+               A7       D
+
+Comin' for to carry me home.
+```
+
+To replace the text above to ChordPro format, select the region and
+run `chordpro-a2crd` with a prefix argument `C-u`, which deletes empty
+lines in the region before attempting conversion:
+
+```
+Swing lo[D]w, sweet [G]chariot[D],
+Comin' for to carry me [A7]home.
+Swing l[D7]ow, sweet [G]chariot[D],
+Comin' for to c[A7]arry me h[D]ome.
+```
+
+You can then edit this buffer and save it to a `.cho` file before
+exporting it to PDF.
+
 ### Export to PDF
 
 If the `chordpro` command is in your `$PATH` ([installation
