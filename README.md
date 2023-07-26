@@ -76,6 +76,8 @@ exporting it to PDF.
 If the `chordpro` command is in your `$PATH` ([installation
 instructions](https://www.chordpro.org/chordpro/ChordPro-Installation.html)),
 `M-x chordpro-export` will export the current ChordPro buffer to PDF.
+The ChordPro buffer must be visiting a file on disk in order for this
+function to work.
 
 ### Live export
 
