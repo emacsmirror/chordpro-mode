@@ -100,6 +100,7 @@ changes:
 
 - Forked in 2023
 - Add `chordpro-export` function
+- Add `chordpro-a2crd` function
 - Remove broken mouse keybindings
 - Use thingatpt for chords
 - Clean up obsolete code
