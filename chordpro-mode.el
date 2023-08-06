@@ -76,13 +76,6 @@
      ("\\({\\(composer\\|artist\\|album\\|capo\\|key\\|time\\|tempo\\)[^}]*}\\)" . font-lock-keyword-face)
      ("\\({[^}]*}\\)" . font-lock-variable-name-face))))
 
-(defvar chordpro-chord-syntax-table
-  (let ((st (make-syntax-table)))
-    ;; "#" is treated as part of a word so that `capitalize' returns
-    ;; qualified chords like "A#dim/B" instead of "A#Dim/B".
-    (modify-syntax-entry ?# "w " st)
-    st))
-
 ;;;; Functions
 
 (defun chordpro--insert-chord (chord)
@@ -90,9 +83,10 @@
   (insert "[" (chordpro-normalize-chord chord) "]"))
 
 (defun chordpro-normalize-chord (chord)
-  "Trim whitespace, capitalize first letter of CHORD."
-  (with-syntax-table chordpro-chord-syntax-table
-    (capitalize (string-trim chord))))
+  "Trim whitespace, upcase first letter of CHORD, downcase remaining letters."
+  (let ((chord (downcase (string-trim chord))))
+    (cl-callf upcase (aref chord 0))
+    chord))
 
 (defun chordpro-complete-chord ()
   "Complete a chord from a list of chord already in the buffer."
