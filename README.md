@@ -16,12 +16,16 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 
 ### Editing
 
-* `[`        : Insert a chord at point. Brackets will automatically be
-  inserted, space trimmed, and the chord capitalized. (To insert a
-  literal `[` characters, use `C-q [`)
+`chordpro-mode.el` add functionality for normalizing (formatting)
+chords correctly so that the ChordPro command line program can read
+them. This means inserting brackets, trimming leading and trailing
+whitespace, and capitalizing chords.
+
+* `]`        : Close and normalize chord at point.
+* `C-c i`    : Insert a normalized chord at point.
 * `C-c w`    : Kill the chord at point.
 * `C-c z`    : Kill the next chord after point.
-* `C-c r`    : Replace the chord at point with another chord.
+* `C-c r`    : Replace the chord at point with another normalized chord.
 * `C-c c`    : Copy the chord at point
 * `C-c x`    : Copy the next chord
 * `C-M-n`    : Move chord at point forward PREFIX chars.
@@ -105,6 +109,7 @@ changes:
 - Use thingatpt for chords
 - Clean up obsolete code
 - Add `.cho` to auto-mode-alist
+- Add `chordpro-close-chord` function for easy editing
 
 ### 1.0
 

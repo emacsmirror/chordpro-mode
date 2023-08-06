@@ -92,7 +92,23 @@
   "Complete a chord from a list of chord already in the buffer."
   (completing-read "Choose chord: " (chordpro-buffer-chord-list)))
 
+(defun chordpro-chord-text (chord)
+  "Return text of CHORD with no leading or trailing brackets."
+  (when (string-match chordpro-chord-regexp chord)
+    (match-string 1 chord)))
+
 ;;;; Commands
+
+(defun chordpro-close-chord ()
+  "Close and normalize the chord at point."
+  (interactive)
+  (if (looking-at "]")
+      ;; Account for `electric-pair-mode' which auto-inserts a closing bracket.
+      (forward-char)
+    (insert "]"))
+  (when-let ((chord (thing-at-point 'chordpro-chord)))
+    (chordpro-delete-chord-at-point)
+    (chordpro--insert-chord (chordpro-chord-text chord))))
 
 (defun chordpro-insert-chord ()
   "Insert a chord chosen from among all chords already in the file.
@@ -257,7 +273,8 @@ external command."
 (defvar-keymap chordpro-mode-map
   :parent  text-mode-map
   :doc "Keymap for `chordpro-mode' commands."
-  "["        #'chordpro-insert-chord
+  "]"        #'chordpro-close-chord
+  "C-c i"    #'chordpro-insert-chord
   "C-c w"    #'chordpro-kill-chord-at-point
   "C-c z"    #'chordpro-kill-next-chord
   "C-c c"    #'chordpro-copy-chord-at-point
