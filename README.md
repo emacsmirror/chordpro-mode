@@ -102,18 +102,18 @@ changes:
 
 ### 2.1.0-pre
 
-Nothing new yet.
+- Add `chordpro-a2crd` function
+- Add `chordpro-close-chord` function for easy editing
+- Bind `chordpro-export` to `C-c C-c`
 
 ### 2.0
 
 - Forked in 2023
 - Add `chordpro-export` function
-- Add `chordpro-a2crd` function
 - Remove broken mouse keybindings
 - Use thingatpt for chords
 - Clean up obsolete code
 - Add `.cho` to auto-mode-alist
-- Add `chordpro-close-chord` function for easy editing
 
 ### 1.0
 
