@@ -105,6 +105,7 @@ changes:
 - Add `chordpro-a2crd` function
 - Add `chordpro-close-chord` function for easy editing
 - Bind `chordpro-export` to `C-c C-c`
+- Handle errors in `chordpro-export`
 
 ### 2.0
 

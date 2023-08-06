@@ -254,19 +254,23 @@ will change the region boundaries."
 With a prefix ARG, prompt for chordpro switches before running
 external command."
   (interactive "P")
-  (let* ((input (shell-quote-argument (buffer-file-name)))
-         (output (file-name-with-extension input "pdf"))
-         (default-switches (concat "--output=" output " " input))
-         (switches (split-string-shell-command
-                    (if arg
-                        (read-string "ChordPro switches: " default-switches)
-                      default-switches)))
-         (buffer (with-current-buffer (get-buffer-create " *ChordPro output/errors*")
-                   (erase-buffer)
-                   (current-buffer))))
-    (if (zerop (apply #'call-process "chordpro" nil buffer nil switches))
-        (message "Successfully exported to PDF: %s" output)
-      (error "Unable to export ChordPro document. For details, see: %S" buffer))))
+  (unless (buffer-file-name)
+    (user-error "ChordPro: Save buffer to file before exporting"))
+  (unless (and (buffer-modified-p)
+             (not (y-or-n-p "ChordPro: Buffer modified. Export from file on disk?")))
+    (let* ((input (shell-quote-argument (buffer-file-name)))
+           (output (file-name-with-extension input "pdf"))
+           (default-switches (concat "--output=" output " " input))
+           (switches (split-string-shell-command
+                      (if arg
+                          (read-string "ChordPro switches: " default-switches)
+                        default-switches)))
+           (buffer (with-current-buffer (get-buffer-create " *ChordPro output/errors*")
+                     (erase-buffer)
+                     (current-buffer))))
+      (if (zerop (apply #'call-process "chordpro" nil buffer nil switches))
+          (message "Successfully exported to PDF: %s" output)
+        (error "Unable to export ChordPro document. For details, see: %S" buffer)))))
 
 ;;;; Major mode
 
