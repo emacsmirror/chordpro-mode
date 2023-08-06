@@ -100,6 +100,10 @@ changes:
 
 ## Changelog
 
+### 2.1.0-pre
+
+Nothing new yet.
+
 ### 2.0
 
 - Forked in 2023
