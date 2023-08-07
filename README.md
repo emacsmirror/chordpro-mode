@@ -98,6 +98,12 @@ changes:
 
 ![demo.png](./img/demo.png)
 
+## Acknowledgements
+
+- [Howard Ding](https://github.com/hading) for writing the original version of `chordpro-mode.el`
+- [Johan Vromans](https://johan.vromans.org/) for writing `chordpro`
+  and for feedback on `chordpro-mode.el`
+
 ## Changelog
 
 ### 2.1.0-pre
