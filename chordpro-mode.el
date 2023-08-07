@@ -171,7 +171,7 @@ Uses `completing-read' to select among chords in current buffer."
   (when-let ((chord (thing-at-point 'chordpro-chord)))
     (kill-new chord)))
 
-(defun chordpro-transpose-chord (n)
+(defun chordpro-move-chord (n)
   "Move the current chord forward N characters."
   (interactive "*p")
   (when-let (bounds (bounds-of-thing-at-point 'chordpro-chord))
@@ -187,12 +187,12 @@ Uses `completing-read' to select among chords in current buffer."
             (yank)
             (backward-char offset))
         (error (goto-char orig)
-               (error "Unable to transpose chord"))))))
+               (error "Unable to move chord"))))))
 
-(defun chordpro-transpose-chord-backward (n)
+(defun chordpro-move-chord-backward (n)
   "Move the current chord backward N characters."
   (interactive "*p")
-  (chordpro-transpose-chord (- n)))
+  (chordpro-move-chord (- n)))
 
 ;;;;; Inserting directives
 
@@ -288,8 +288,8 @@ external command."
   "C-c t"    #'chordpro-insert-title
   "C-c s"    #'chordpro-insert-subtitle
   "C-c r"    #'chordpro-choose-replace-current-chord
-  "C-M-n"    #'chordpro-transpose-chord
-  "C-M-p"    #'chordpro-transpose-chord-backward
+  "C-M-n"    #'chordpro-move-chord
+  "C-M-p"    #'chordpro-move-chord-backward
   "C-c C-c"  #'chordpro-export)
 
 ;;;###autoload
