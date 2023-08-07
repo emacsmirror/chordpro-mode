@@ -106,6 +106,7 @@ changes:
 - Add `chordpro-close-chord` function for easy editing
 - Bind `chordpro-export` to `C-c C-c`
 - Handle errors in `chordpro-export`
+- Rename `chordpro-transpose-*` to `chordpro-move-*` for clarity
 
 ### 2.0
 
