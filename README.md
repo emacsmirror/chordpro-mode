@@ -16,7 +16,7 @@ Files with the `.cho` extension will automatically be opened with `chordpro-mode
 
 ### Editing
 
-`chordpro-mode.el` add functionality for normalizing (formatting)
+`chordpro-mode.el` adds functionality for normalizing (formatting)
 chords correctly so that the ChordPro command line program can read
 them. This means inserting brackets, trimming leading and trailing
 whitespace, and capitalizing chords.
