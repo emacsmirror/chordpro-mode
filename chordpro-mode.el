@@ -120,8 +120,8 @@ Uses `completing-read'."
 
 (defun chordpro-buffer-chord-list ()
   "Return a list of the chords currently used in the document."
-  ;;This could be done more efficiently, but for most usages
-  ;;it shouldn't be a problem to just scan the whole document each time
+  ;; If scanning the whole document each time becomes a performance
+  ;; issue, consider `with-memoization'.
   (interactive)
   (let (chords)
     (save-excursion
