@@ -106,6 +106,10 @@ changes:
 
 ## Changelog
 
+### 2.2.0-pre
+
+Nothing yet...
+
 ### 2.1.0
 
 - Add `chordpro-a2crd` function
