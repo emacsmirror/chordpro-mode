@@ -106,7 +106,7 @@ changes:
 
 ## Changelog
 
-### 2.1.0-pre
+### 2.1.0
 
 - Add `chordpro-a2crd` function
 - Add `chordpro-close-chord` function for easy editing
