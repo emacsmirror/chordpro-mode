@@ -84,9 +84,11 @@
 
 (defun chordpro-normalize-chord (chord)
   "Trim whitespace, upcase first letter of CHORD, downcase remaining letters."
-  (let ((chord (downcase (string-trim chord))))
-    (cl-callf upcase (aref chord 0))
-    chord))
+  (mapconcat (lambda (part)
+               (cl-callf upcase (aref part 0))
+               part)
+             ;; Split on "/" so that A/D has the proper case.
+             (string-split (downcase chord) "/" t "[ \t\n\r]+") "/"))
 
 (defun chordpro-complete-chord ()
   "Complete a chord from a list of chord already in the buffer."
