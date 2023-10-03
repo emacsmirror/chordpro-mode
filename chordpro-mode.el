@@ -62,6 +62,14 @@
 (require 'subr-x)
 (require 'compat)
 
+;;;; Customization
+
+(defcustom chordpro-environment-directives
+  '("bridge" "chorus" "grid" "tab" "verse")
+  "Environment directives available for completion with
+`chordpro-insert-environment-directive'."
+  :type '(repeat string))
+
 ;;;; Internal variables
 
 (defvar chordpro-chord-regexp
@@ -224,6 +232,13 @@ Uses `completing-read' to select among chords in current buffer."
   (insert "{start_of_chorus}\n\n{end_of_chorus}\n")
   (search-backward "\n" nil nil 2))
 
+(defun chordpro-insert-environment-directive ()
+  "Insert a chordpro environment directive."
+  (interactive)
+  (let ((directive (completing-read "Enter directive: " chordpro-environment-directives)))
+    (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive)))
+  (search-backward "\n" nil nil 2))
+
 ;;;; ChordPro integration
 
 ;;;###autoload
@@ -287,6 +302,7 @@ external command."
   "C-c x"    #'chordpro-copy-next-chord
   "C-c m"    #'chordpro-insert-comment
   "C-c h"    #'chordpro-insert-chorus
+  "C-c e"    #'chordpro-insert-environment-directive
   "C-c t"    #'chordpro-insert-title
   "C-c s"    #'chordpro-insert-subtitle
   "C-c r"    #'chordpro-choose-replace-current-chord

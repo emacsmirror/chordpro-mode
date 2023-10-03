@@ -32,6 +32,8 @@ whitespace, and capitalizing chords.
 * `C-M-p`    : Move chord at point backward PREFIX chars
 * `C-c m`    : Insert a comment directive
 * `C-c h`    : Insert a chorus directive
+* `C-c e`    : Insert an enviroment directive, e.g. `bridge`,
+  `chorus`, `grid`, `tab`, or `verse`.
 * `C-c t`    : Insert a title directive
 * `C-c s`    : Insert a subtitle directive
 * `C-c C-c`  : Export ChordPro file to PDF
@@ -97,6 +99,13 @@ automatically re-renders the document when the underlying file
 changes:
 
 ![demo.png](./img/demo.png)
+
+## Customization
+
+- `chordpro-environment-directives`
+
+    You can change if you want to insert environment directives
+    besides `bridge`, `chorus`, `grid`, `tab`, or `verse`.
 
 ## Acknowledgements
 
