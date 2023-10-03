@@ -117,7 +117,8 @@ changes:
 
 ### 2.2.0-pre
 
-Nothing yet...
+- Add `chordpro-insert-environment-directive` command and
+  `chordpro-environment-directives` customization option
 
 ### 2.1.0
 
