@@ -31,7 +31,6 @@ whitespace, and capitalizing chords.
 * `C-M-n`    : Move chord at point forward PREFIX chars.
 * `C-M-p`    : Move chord at point backward PREFIX chars
 * `C-c m`    : Insert a comment directive
-* `C-c h`    : Insert a chorus directive
 * `C-c e`    : Insert an enviroment directive, e.g. `bridge`,
   `chorus`, `grid`, `tab`, or `verse`.
 * `C-c t`    : Insert a title directive
@@ -119,6 +118,8 @@ changes:
 
 - Add `chordpro-insert-environment-directive` command and
   `chordpro-environment-directives` customization option
+- Remove `chordpro-insert-chorus` (superceded by
+  `chordpro-insert-environment-directive`)
 
 ### 2.1.0
 
