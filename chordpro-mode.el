@@ -64,6 +64,11 @@
 
 ;;;; Customization
 
+(defgroup chordpro nil
+  "Major mode for ChordPro lead sheet file format."
+  :group 'files
+  :prefix "chordpro-")
+
 (defcustom chordpro-environment-directives
   '("bridge" "chorus" "grid" "tab" "verse")
   "Environment directives available for completion with
