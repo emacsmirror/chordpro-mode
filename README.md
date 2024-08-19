@@ -32,7 +32,7 @@ whitespace, and capitalizing chords.
 * `C-M-p`    : Move chord at point backward PREFIX chars
 * `C-c m`    : Insert a comment directive
 * `C-c e`    : Insert an enviroment directive, e.g. `bridge`,
-  `chorus`, `grid`, `tab`, or `verse`.
+  `chorus`, `grid`, `tab`, or `verse`.  Wraps region when active.
 * `C-c t`    : Insert a title directive
 * `C-c s`    : Insert a subtitle directive
 * `C-c C-c`  : Export ChordPro file to PDF
@@ -116,7 +116,7 @@ changes:
 
 ### 2.3.0-pre
 
-Nothing yet...
+- `chordpro-insert-environment-directive` wraps the region when active.
 
 ### 2.2.0
 
