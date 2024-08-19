@@ -7,7 +7,7 @@
 ;; Homepage: https://git.sr.ht/~breatheoutbreathein/chordpro-mode.el/
 ;; Keywords: convenience
 
-;; Copyright (C) 2023 Joseph Turner
+;; Copyright (C) 2023, 2024 Joseph Turner
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU Affero General Public License
