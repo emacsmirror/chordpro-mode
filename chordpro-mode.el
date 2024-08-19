@@ -231,13 +231,28 @@ Uses `completing-read' to select among chords in current buffer."
   (interactive)
   (chordpro-insert-single-directive "subtitle"))
 
+(defun chordpro-insert-environment-directive (&optional start end)
+  "Insert a chordpro environment directive.
+When region is active, inserted directive wraps region."
+  (interactive (list (use-region-beginning) (use-region-end)))
+  (let ((directive (completing-read "Enter directive: " chordpro-environment-directives)))
+    (if (use-region-p)
+        (with-undo-amalgamate
+          (goto-char end)
+          (insert (format "{end_of_%s}\n" directive))
+          (goto-char start)
+          (insert (format "{start_of_%s}" directive)))
+      (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive))
+      (search-backward "\n" nil nil 2))))
+
 (defun chordpro-insert-environment-directive ()
   "Insert a chordpro environment directive."
   (interactive)
   (let ((directive (completing-read "Enter directive: " chordpro-environment-directives)))
-    (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive)))
+    (if (use-region-p)
+        (save-excursion)
+      (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive))))
   (search-backward "\n" nil nil 2))
-
 ;;;; ChordPro integration
 
 ;;;###autoload
