@@ -114,7 +114,7 @@ changes:
 
 ## Changelog
 
-### 2.3.0-pre
+### 2.3.0
 
 - `chordpro-insert-environment-directive` wraps the region when active.
 - Minimum required Emacs version is now 29.1.
