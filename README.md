@@ -114,6 +114,10 @@ changes:
 
 ## Changelog
 
+### 2.4.0-pre
+
+Nothing yet...
+
 ### 2.3.0
 
 - `chordpro-insert-environment-directive` wraps the region when active.
