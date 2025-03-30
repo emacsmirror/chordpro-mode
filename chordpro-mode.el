@@ -245,14 +245,6 @@ When region is active, inserted directive wraps region."
       (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive))
       (search-backward "\n" nil nil 2))))
 
-(defun chordpro-insert-environment-directive ()
-  "Insert a chordpro environment directive."
-  (interactive)
-  (let ((directive (completing-read "Enter directive: " chordpro-environment-directives)))
-    (if (use-region-p)
-        (save-excursion)
-      (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive))))
-  (search-backward "\n" nil nil 2))
 ;;;; ChordPro integration
 
 ;;;###autoload
