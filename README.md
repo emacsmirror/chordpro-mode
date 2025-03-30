@@ -114,6 +114,10 @@ changes:
 
 ## Changelog
 
+### 2.5.0-pre
+
+Nothing yet...
+
 ### 2.4.0
 
 - Fix `chordpro-insert-environment-directive` by removing duplicate

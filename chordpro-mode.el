@@ -2,7 +2,7 @@
 
 ;; Author: Howard Ding <hading2@gmail.com>
 ;; Author: Joseph Turner <public@breatheoutbreathe.in>
-;; Version: 2.4.0
+;; Version: 2.5.0-pre
 ;; Package-Requires: ((emacs "29.1") (compat "29.1.4.1"))
 ;; Homepage: https://git.sr.ht/~breatheoutbreathein/chordpro-mode.el/
 ;; Keywords: convenience
