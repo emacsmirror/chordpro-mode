@@ -118,7 +118,9 @@ changes:
 
 ### 2.5.0-pre
 
-Nothing yet...
+- Update keybindings to fit Emacs keybinding conventions.  See
+  [Keybinding
+  Conventions](http://www.gnu.org/s/emacs/manual/html_node/elisp/Key-Binding-Conventions.html) for more information.
 
 ### 2.4.0
 
