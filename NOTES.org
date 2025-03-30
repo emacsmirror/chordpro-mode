@@ -1,7 +1,7 @@
 * Design ideas
-** Better fontification
+** TODO Better fontification
 See: <https://github.com/hading/chordpro-mode/issues/1>
-** Add ~auto-insert~-like functionality with prompts to enter title, artist, etc.
-** Export functionality
+** TODO Add ~auto-insert~-like functionality with prompts to enter title, artist, etc.
+** DONE Export functionality
 See: <https://github.com/hading/chordpro-mode/issues/2>
-** Add transpose function
+** TODO Add transpose function
