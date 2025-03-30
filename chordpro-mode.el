@@ -300,7 +300,7 @@ external command."
   (unless (buffer-file-name)
     (user-error "ChordPro: Save buffer to file before exporting"))
   (unless (and (buffer-modified-p)
-             (not (y-or-n-p "ChordPro: Buffer modified. Export from file on disk?")))
+               (not (y-or-n-p "ChordPro: Buffer modified. Export from file on disk?")))
     (let* ((input (shell-quote-argument (buffer-file-name)))
            (output (file-name-with-extension input "pdf"))
            (default-switches (concat "--output=" output " " input))
