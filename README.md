@@ -116,7 +116,7 @@ changes:
 
 ### 2.4.0-pre
 
-Nothing yet...
+- Fix `chordpro-insert-environment-directive` by removing duplicate `defun`.
 
 ### 2.3.0
 
