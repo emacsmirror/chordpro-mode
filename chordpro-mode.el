@@ -245,6 +245,26 @@ When region is active, inserted directive wraps region."
       (insert (format "{start_of_%s}\n\n{end_of_%s}\n" directive directive))
       (search-backward "\n" nil nil 2))))
 
+(defun chordpro-close-environment-directive ()
+  "Close currently open environment directive."
+  (interactive)
+  (condition-case err
+      (save-excursion
+        (search-backward-regexp
+         (rx bol "{"
+             (group (or "start_of_" "so" "end_of_" "eo"))
+             (group (1+ nonl))
+             (or ":" "}" " "))))
+    (search-failed (user-error "Chordpro: Not inside environment directive")))
+  (insert "{"
+          (pcase (match-string 1)
+            ("start_of_" "end_of_")
+            ("so" "eo")
+            ((or "end_of_" "eo")
+             (user-error "Chordpro: Not inside environment directive")))
+          (match-string 2)
+          "}\n"))
+
 ;;;; ChordPro integration
 
 ;;;###autoload
