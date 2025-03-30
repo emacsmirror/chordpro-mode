@@ -22,20 +22,22 @@ them. This means inserting brackets, trimming leading and trailing
 whitespace, and capitalizing chords.
 
 * `]`        : Close and normalize chord at point.
-* `C-c i`    : Insert a normalized chord at point.
-* `C-c w`    : Kill the chord at point.
-* `C-c z`    : Kill the next chord after point.
-* `C-c r`    : Replace the chord at point with another normalized chord.
-* `C-c c`    : Copy the chord at point
-* `C-c x`    : Copy the next chord
+* `[`        : Insert a normalized chord at point.
+* `C-c C-w`  : Kill the chord at point.
+* `C-c C->`  : Kill the next chord after point.
+* `C-c M-w`  : Copy the chord at point.
+* `C-c >`    : Copy the next chord after point.
+* `C-c ;`    : Insert a comment directive.
+* `C-c {`    : Insert an environment directive, e.g. `bridge`,
+        `chorus`, `grid`, `tab`, or `verse`.  Wraps region when active.
+* `C-c }`    : Close current open environment directive.
+* `C-c C-t`  : Insert a title directive.
+* `C-c C-s`  : Insert a subtitle directive.
+* `C-c %`    : Replace the chord at point with another normalized chord.
 * `C-M-n`    : Move chord at point forward PREFIX chars.
-* `C-M-p`    : Move chord at point backward PREFIX chars
-* `C-c m`    : Insert a comment directive
-* `C-c e`    : Insert an enviroment directive, e.g. `bridge`,
-  `chorus`, `grid`, `tab`, or `verse`.  Wraps region when active.
-* `C-c t`    : Insert a title directive
-* `C-c s`    : Insert a subtitle directive
-* `C-c C-c`  : Export ChordPro file to PDF
+* `C-M-p`    : Move chord at point backward PREFIX chars.
+* `C-c C-a`  : Replace buffer or active region with ChordPro format.
+* `C-c C-c`  : Export ChordPro file to PDF.
 
 ### Generate ChordPro files
 

@@ -321,18 +321,20 @@ external command."
   :parent  text-mode-map
   :doc "Keymap for `chordpro-mode' commands."
   "]"        #'chordpro-close-chord
-  "C-c i"    #'chordpro-insert-chord
-  "C-c w"    #'chordpro-kill-chord-at-point
-  "C-c z"    #'chordpro-kill-next-chord
-  "C-c c"    #'chordpro-copy-chord-at-point
-  "C-c x"    #'chordpro-copy-next-chord
-  "C-c m"    #'chordpro-insert-comment
-  "C-c e"    #'chordpro-insert-environment-directive
-  "C-c t"    #'chordpro-insert-title
-  "C-c s"    #'chordpro-insert-subtitle
-  "C-c r"    #'chordpro-choose-replace-current-chord
+  "["        #'chordpro-insert-chord
+  "C-c C-w"  #'chordpro-kill-chord-at-point
+  "C-c C->"  #'chordpro-kill-next-chord
+  "C-c M-w"  #'chordpro-copy-chord-at-point
+  "C-c >"    #'chordpro-copy-next-chord
+  "C-c ;"    #'chordpro-insert-comment
+  "C-c {"    #'chordpro-insert-environment-directive
+  "C-c }"    #'chordpro-close-environment-directive
+  "C-c C-t"  #'chordpro-insert-title
+  "C-c C-s"  #'chordpro-insert-subtitle
+  "C-c %"    #'chordpro-choose-replace-current-chord
   "C-M-n"    #'chordpro-move-chord
   "C-M-p"    #'chordpro-move-chord-backward
+  "C-c C-a"  #'chordpro-a2crd
   "C-c C-c"  #'chordpro-export)
 
 ;;;###autoload
