@@ -116,7 +116,10 @@ changes:
 
 ### 2.4.0-pre
 
-- Fix `chordpro-insert-environment-directive` by removing duplicate `defun`.
+- Fix `chordpro-insert-environment-directive` by removing duplicate
+  `defun`.
+- Add new command `chordpro-close-environment-directive` to close the
+  current open directive.
 
 ### 2.3.0
 
