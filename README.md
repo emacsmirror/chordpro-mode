@@ -116,7 +116,7 @@ changes:
 
 ## Changelog
 
-### 2.5.0-pre
+### 2.5.0
 
 - Update keybindings to fit Emacs keybinding conventions.  See
   [Keybinding
