@@ -256,6 +256,8 @@ When region is active, inserted directive wraps region."
              (group (1+ nonl))
              (or ":" "}" " "))))
     (search-failed (user-error "Chordpro: Not inside environment directive")))
+  (unless (= (pos-bol) (point))
+    (insert "\n"))
   (insert "{"
           (pcase (match-string 1)
             ("start_of_" "end_of_")
