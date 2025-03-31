@@ -253,7 +253,7 @@ When region is active, inserted directive wraps region."
         (search-backward-regexp
          (rx bol "{"
              (group (or "start_of_" "so" "end_of_" "eo"))
-             (group (1+ nonl))
+             (group (minimal-match (1+ nonl)))
              (or ":" "}" " "))))
     (search-failed (user-error "Chordpro: Not inside environment directive")))
   (unless (= (pos-bol) (point))
