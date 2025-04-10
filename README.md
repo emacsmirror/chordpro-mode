@@ -116,6 +116,10 @@ changes:
 
 ## Changelog
 
+### 2.7.0-pre
+
+Nothing yet...
+
 ### 2.6.0 [2025-04-10]
 
 - Fix regexp matching bug in `chordpro-close-environment-directive`.
