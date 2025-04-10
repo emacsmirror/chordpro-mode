@@ -116,7 +116,7 @@ changes:
 
 ## Changelog
 
-### 2.6.0-pre
+### 2.6.0 [2025-04-10]
 
 - Fix regexp matching bug in `chordpro-close-environment-directive`.
 - Always insert closing directives on newline.
