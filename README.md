@@ -121,32 +121,32 @@ changes:
 - Fix regexp matching bug in `chordpro-close-environment-directive`.
 - Always insert closing directives on newline.
 
-### 2.5.0
+### 2.5.0 [2025-03-30]
 
 - Update keybindings to fit Emacs keybinding conventions.  See
   [Keybinding
   Conventions](http://www.gnu.org/s/emacs/manual/html_node/elisp/Key-Binding-Conventions.html) for more information.
 
-### 2.4.0
+### 2.4.0 [2025-03-30]
 
 - Fix `chordpro-insert-environment-directive` by removing duplicate
   `defun`.
 - Add new command `chordpro-close-environment-directive` to close the
   current open directive.
 
-### 2.3.0
+### 2.3.0 [2024-08-18]
 
 - `chordpro-insert-environment-directive` wraps the region when active.
 - Minimum required Emacs version is now 29.1.
 
-### 2.2.0
+### 2.2.0 [2023-12-04]
 
 - Add `chordpro-insert-environment-directive` command and
   `chordpro-environment-directives` customization option
 - Remove `chordpro-insert-chorus` (superceded by
   `chordpro-insert-environment-directive`)
 
-### 2.1.0
+### 2.1.0 [2023-09-20]
 
 - Add `chordpro-a2crd` function
 - Add `chordpro-close-chord` function for easy editing
@@ -154,7 +154,7 @@ changes:
 - Handle errors in `chordpro-export`
 - Rename `chordpro-transpose-*` to `chordpro-move-*` for clarity
 
-### 2.0
+### 2.0 [2023-07-15]
 
 - Forked in 2023
 - Add `chordpro-export` function
